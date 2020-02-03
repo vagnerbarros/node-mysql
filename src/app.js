@@ -21,8 +21,5 @@ const AMBIENTE = process.env.NODE_ENV || 'production';
 
 app.listen(API_PORT, () => {
   console.log(`API Integração MySQL
-  Ambiente: ${AMBIENTE} PORTA: ${API_PORT}
-  NF-e: Versão: ${configNFe.versao} Ambiente: ${configNFe.ambiente == 2 ? 'Homologação' : 'Produção'} UF: ${configNFe.uf}
-  NCF-e: Versão: ${configNFCe.versao} Ambiente: ${configNFCe.ambiente == 2 ? 'Homologação' : 'Produção'} UF: ${configNFCe.uf}
-  MDF-e: Versão: ${configMDFe.versao} Ambiente: ${configMDFe.ambiente == 2 ? 'Homologação' : 'Produção'} UF: ${configMDFe.uf}`)
+  Ambiente: ${AMBIENTE} PORTA: ${API_PORT}`);
 });

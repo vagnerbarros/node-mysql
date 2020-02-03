@@ -5,7 +5,6 @@ const Exception = require('../exception/Exception');
 
 class CadastroUsuario {
   
-  
   async autenticar({ login, senha }) {
       
     try {
