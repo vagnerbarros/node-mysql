@@ -13,8 +13,10 @@ app.use(logger('dev'));
 app.disable('x-powered-by');
 
 const routerAuth = require('./routes/auth');
+const routerCliente = require('./routes/cliente');
 
 app.use(routerAuth);
+app.use(routerCliente);
 
 const API_PORT = process.env.API_PORT || 3000;
 const AMBIENTE = process.env.NODE_ENV || 'production';
