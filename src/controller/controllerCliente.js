@@ -4,7 +4,8 @@ class ControllerCliente{
 
   listar(request, response){
 
-    cadCliente.listar()
+    const query = request.query;
+    cadCliente.listar(query)
     .then(clientes => {
       response.status(200).send(clientes);
     })

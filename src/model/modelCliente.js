@@ -3,11 +3,11 @@ const Exception = require('../exception/Exception');
 
 class ModelCliente{
 
-  async listar(){
+  async listar(query){
 
     try{
 
-      return await repositorio.listar();
+      return await repositorio.listar(query);
     }
     catch(erro){
       throw new Exception(500, erro.message);

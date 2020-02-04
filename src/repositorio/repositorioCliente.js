@@ -1,29 +1,36 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const constantes = require('../util/constants');
 
 class RepositorioCliente{
 
   constructor(){
-    this.connection = mysql.createConnection({
+    this.pool = mysql.createPool({
       host: constantes.HOST,
       user: constantes.USER,
       password: constantes.PASSWORD,
-      database: constantes.DATA_BASE
+      database: constantes.DATA_BASE,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0
     });
   }
 
-  listar(){
+  async listar({ page = 1, pageSize = 10 }){
 
-    return new Promise((resolve, reject) => {
-      this.connection.connect();
-      this.connection.query('SELECT * FROM PACIENTES', function(error, results, fields){
-        if(error){
-          reject(error);
-        }
-        this.connection.end();
-        resolve(results);
+    try{
+
+      return await new Promise((resolve, reject) => {
+        this.pool.query(`SELECT * FROM CLIENTES LIMIT ${(page - 1) * pageSize}, ${pageSize}`, function(err, rows, fields){
+          if(err){
+            reject(err);
+          }
+          resolve(rows);
+        });
       });
-    });
+    }
+    catch(erro){
+      throw erro;
+    }
   }
 }
 
