@@ -1,5 +1,5 @@
 var jwt = require('jsonwebtoken');
-var constants = require('./constants');
+var config = require('../config');
 
 function verificarToken(request, response, next){
 
@@ -8,7 +8,7 @@ function verificarToken(request, response, next){
         return response.status(403).send({ sucesso : false, motivo: 'Nenhum token informado.'});
     }
     else{
-        jwt.verify(token, constants.JWT_SECRET, function(err, decodificado){
+        jwt.verify(token, config.JWT.JWT_SECRET, function(err, decodificado){
             if(err){
                 return response.status(500).send({ sucesso: false, motivo: 'Token inválido'});
             }

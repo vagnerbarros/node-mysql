@@ -1,14 +1,14 @@
 const mysql = require('mysql2');
-const constantes = require('../util/constants');
+const config = require('../config');
 
 class RepositorioCliente{
 
   constructor(){
     this.pool = mysql.createPool({
-      host: constantes.HOST,
-      user: constantes.USER,
-      password: constantes.PASSWORD,
-      database: constantes.DATA_BASE,
+      host: config.MySQL.HOST,
+      user: config.MySQL.USER,
+      password: config.MySQL.PASSWORD,
+      database: config.MySQL.DATABASE,
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0

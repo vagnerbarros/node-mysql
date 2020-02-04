@@ -1,6 +1,6 @@
 const repositorio = require("../repositorio/repositorioUsuario");
 const jwt = require("jsonwebtoken");
-const constants = require("../util/constants");
+const config = require("../config");
 const Exception = require('../exception/Exception');
 
 class CadastroUsuario {
@@ -14,7 +14,7 @@ class CadastroUsuario {
         let senhaCorreta = senha === usuario.senha;
         if(senhaCorreta) {
         
-          let token = jwt.sign({ id: usuario._id }, constants.JWT_SECRET);
+          let token = jwt.sign({ id: usuario._id }, config.JWT.JWT_SECRET);
           
           let retornoUsuario = { 
             login: usuario.login, 
