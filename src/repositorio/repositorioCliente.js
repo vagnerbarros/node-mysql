@@ -20,7 +20,7 @@ class RepositorioCliente{
     try{
 
       return await new Promise((resolve, reject) => {
-        this.pool.query(`SELECT * FROM CLIENTES LIMIT ${(page - 1) * pageSize}, ${pageSize}`, function(err, rows, fields){
+        this.pool.query(`SELECT cpf, rg, nome, nascimento, fone, email, observacao, genero, tipo FROM clientes LIMIT ${(page - 1) * pageSize}, ${pageSize}`, function(err, rows, fields){
           if(err){
             reject(err);
           }
